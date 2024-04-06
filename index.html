@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        @keyframes changeBackground {
+            0% {
+                opacity: 1;
+                background-image: url("img/background1.png");
+            }
+            33% {
+                opacity: 1;
+                background-image: url("img/background2.png");
+            }
+            66% {
+                opacity: 1;
+                background-image: url("img/background3.png");
+            }
+            100% {
+                opacity: 1;
+                background-image: url("img/background1.png");
+            }
+        }
+        body {
+            background-image: url("img/background1.png"); /* Background ban đầu */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top center;
+            animation: changeBackground 9s infinite; /* Thay đổi mỗi 3 giây */
+        }
+
+        @keyframes cube-rot {
+            from { transform: rotateX(-20deg) rotateY(0); }
+            to { transform: rotateX(-20deg) rotateY(360deg); }
+        }
+        
+        #centercube {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50vh;
+            transform: translateY(-50px);
+        }
+    
+        #threedee {
+            perspective: 800px;
+            perspective-origin: 50px 50px;
+        }
+        
+        #cube {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            transform-style: preserve-3d;
+            animation: cube-rot 2s infinite linear;
+        }
+        
+        #cube div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        #front {
+            transform: translateZ(50px);
+            background-image: url("img/front.png");
+        }
+        
+        #back {
+            transform: translateZ(-50px) rotateY(180deg);
+            background-image: url("img/side.png");
+        }
+        
+        #left {
+            transform: translateX(-50px) rotateY(-90deg);
+            background-image: url("img/side.png");
+        }
+        
+        #right {
+            transform: translateX(50px) rotateY(90deg);
+            background-image: url("img/side.png");
+        }
+        
+        #top {
+            transform: translateY(-50px) rotateX(-90deg);
+            background-image: url("img/side.png");
+        }
+        
+        #wd {
+            padding-left: 20px;
+        }
+
+        /* CSS cho thanh chức năng */
+        .navbar {
+            background-color: #333; /* Màu nền của thanh chức năng */
+            overflow: hidden;
+            width: 100%; /* Đảm bảo thanh chức năng chiếm toàn bộ chiều rộng của trang */
+        }
+
+        /* Định dạng các liên kết trong thanh chức năng */
+        .navbar a {
+            float: left; /* Sắp xếp các liên kết sang trái */
+            display: block; /* Hiển thị dưới dạng khối */
+            color: white; /* Màu chữ */
+            text-align: center; /* Căn giữa văn bản */
+            padding: 14px 20px; /* Khoảng cách giữa các liên kết */
+            text-decoration: none; /* Loại bỏ gạch chân */
+        }
+
+        /* Định dạng khi di chuột qua các liên kết */
+        .navbar a:hover {
+            background-color: #ddd; /* Màu nền khi di chuột qua */
+            color: black; /* Màu chữ khi di chuột qua */
+        }
+
+        /* CSS cho hạt bụi */
+        .dirt {
+            position: fixed;
+            width: 10px;
+            height: 12px;
+            background-image: url('img/dirt.png'); /* Đường dẫn đến hình ảnh hạt bụi */
+            background-size: cover;
+            animation: fall 3s linear infinite; /* Sử dụng animation để tạo hiệu ứng rơi */
+        }
+
+        @keyframes fall {
+            from {
+                top: -10px; /* Vị trí ban đầu ở trên đỉnh trang web */
+                opacity: 1;
+            }
+            to {
+                top: 100vh; /* Vị trí cuối cùng dưới cùng của trang web */
+                opacity: 0;
+            }
+        }
+
+        /* CSS cho phần credit */
+        footer {
+            background-color: #333; /* Màu nền của phần credit */
+            color: white; /* Màu chữ */
+            overflow: hidden;
+            text-align: center; /* Căn giữa văn bản */
+            padding: 1px 0; /* Khoảng cách giữa nội dung và biên của phần credit */
+            position: fixed; /* Phần credit cố định ở dưới cùng của trang */
+            bottom: 0; /* Dính phần credit vào đáy của trang */
+            width: 98.7%; /* Chiều rộng của phần credit */
+            height: 7%;
+        }
+    </style>
+</head>
+<body>
+<!-- Thanh chức năng -->
+<div class="navbar">
+  <a href="#" onclick="showInfo()">Trang chủ</a>
+  <a href="#" onclick="showInfo()">Thông tin</a>
+  <a href="https://discord.gg/uyjhD4zChC">Discord</a>
+</div>
+
+<!-- Phần còn lại của trang web -->
+<table id="centercube">
+    <tr>
+        <td id="threedee">
+            <div id="cube">
+                <div id="front"></div>
+                <div id="back"></div>
+                <div id="left"></div>
+                <div id="right"></div>
+                <div id="top"></div>
+            </div>
+        </td>
+        <td id="wd">
+            <img src="img/webdisplays.png"/>
+        </td>
+        <td id="threedee">
+            <div id="cube">
+                <div id="front"></div>
+                <div id="back"></div>
+                <div id="left"></div>
+                <div id="right"></div>
+                <div id="top"></div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<!-- Phần credit -->
+<footer>
+    <p>@Copyright 2023 NekFad, All rights reserved</p>
+</footer>
+
+<!-- Script để tạo hạt bụi -->
+<script>
+    // Thêm hạt bụi mỗi 0.2 giây
+    setInterval(createDirt, 200);
+
+    function createDirt() {
+        const dirt = document.createElement('div');
+        dirt.classList.add('dirt');
+        dirt.style.left = Math.random() * window.innerWidth + 'px'; // Random vị trí theo chiều ngang
+        document.body.appendChild(dirt);
+
+        // Xóa hạt bụi khỏi DOM sau khi kết thúc hiệu ứng
+        setTimeout(() => {
+            dirt.remove();
+        }, 5000); // Đảm bảo hạt bụi biến mất sau khi hoàn thành hiệu ứng
+    }
+    function showInfo() {
+        // Tạo một cửa sổ popup với thông tin mong muốn
+        alert("Đây là trang web thử nghiệm, hiện chưa có tính năng này.");
+        // Nếu bạn muốn tùy chỉnh nội dung và kiểu hiển thị, bạn có thể sử dụng các phương pháp khác như tạo một div overlay, modal, hoặc sử dụng thư viện JavaScript như Bootstrap để tạo modal.
+    }
+</script>
+
+</body>
+</html>
