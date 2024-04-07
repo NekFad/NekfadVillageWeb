@@ -29,68 +29,6 @@
             animation: changeBackground 9s infinite; /* Thay đổi mỗi 3 giây */
         }
 
-        @keyframes cube-rot {
-            from { transform: rotateX(-20deg) rotateY(0); }
-            to { transform: rotateX(-20deg) rotateY(360deg); }
-        }
-        
-        #centercube {
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 50vh;
-            transform: translateY(-50px);
-        }
-    
-        #threedee {
-            perspective: 800px;
-            perspective-origin: 50px 50px;
-        }
-        
-        #cube {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            transform-style: preserve-3d;
-            animation: cube-rot 2s infinite linear;
-        }
-        
-        #cube div {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        #front {
-            transform: translateZ(50px);
-            background-image: url("img/front.png");
-        }
-        
-        #back {
-            transform: translateZ(-50px) rotateY(180deg);
-            background-image: url("img/side.png");
-        }
-        
-        #left {
-            transform: translateX(-50px) rotateY(-90deg);
-            background-image: url("img/side.png");
-        }
-        
-        #right {
-            transform: translateX(50px) rotateY(90deg);
-            background-image: url("img/side.png");
-        }
-        
-        #top {
-            transform: translateY(-50px) rotateX(-90deg);
-            background-image: url("img/side.png");
-        }
-        
-        #wd {
-            padding-left: 20px;
-        }
-
         /* CSS cho thanh chức năng */
         .navbar {
             background-color: #333; /* Màu nền của thanh chức năng */
@@ -147,49 +85,181 @@
             width: 98.7%; /* Chiều rộng của phần credit */
             height: 7%;
         }
+
+        /* CSS cho ô avatar */
+        .avatar {
+            position: fixed;
+            top: 29%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 130px; /* Thiết lập kích thước của ô avatar */
+            height: 130px; /* Thiết lập kích thước của ô avatar */
+            border-radius: 50%; /* Để tạo hình tròn cho ô avatar */
+            background-color: #fff; /* Màu nền của ô avatar */
+            background-image: url('img/avatar.png'); /* Đường dẫn đến hình ảnh avatar */
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #fffa; /* Thêm viền màu trắng */
+        }
+        .name-box {
+            position: fixed;
+            top: 47%; /* Điều chỉnh vị trí theo y */
+            left: 50%; /* Điều chỉnh vị trí theo x */
+            transform: translate(-50%, -50%);
+            background-color: #333a; /* Màu nền với độ trong suốt */
+            padding: 20px; /* Khoảng cách giữa chữ và viền */
+            border-radius: 10px; /* Độ cong của góc */
+            text-align: center; /* Căn giữa văn bản */
+            color: white; /* Màu chữ */
+            font-size: 16px; /* Kích thước chữ */
+            font-family: Arial, sans-serif; /* Font chữ */
+            pointer-events: none; /* Ngăn chặn sự kiện chuột để không che phủ ô avatar */
+            display: inline-block; /* Hiển thị như một khối nhỏ */
+            width: 300px; /* Chiều rộng cụ thể */
+            height: 430px; /* Chiều cao cụ thể */
+        }
+        /* CSS cho nút */
+        .action-button {
+            position: fixed;
+            top: 54%; /* Điều chỉnh vị trí theo y */
+            left: 50%; /* Điều chỉnh vị trí theo x */
+            transform: translate(-50%, -50%);
+            background-color: transparent; /* Màu nền */
+            color: white; /* Màu chữ */
+            padding: 15px 70px; /* Kích thước nút */
+            text-align: center; /* Căn giữa nút */
+            font-size: 16px;
+            text-decoration: none; /* Loại bỏ gạch chân */
+            cursor: pointer; /* Thay đổi hình dạng con trỏ khi di chuột qua nút */
+            border-radius: 8px; /* Độ cong viền */
+            border: 2px solid black; /* Loại bỏ viền */
+            overflow: hidden; /* Loại bỏ phần ngoài của hình ảnh và văn bản */
+        }
+
+        .action-button:hover {
+            background-color: rgba(0, 0, 0, 0.5); /* Màu nền đen trong suốt */
+        }
+
+        /* CSS cho hình ảnh */
+        .action-button img {
+            margin-right: 10px; /* Tạo khoảng cách giữa hình ảnh và văn bản */
+            border-radius: 50%; /* Để làm cho hình ảnh bo tròn */
+            width: 30px; /* Độ rộng của hình ảnh */
+            height: 30px; /* Độ cao của hình ảnh */
+            vertical-align: middle; /* Căn giữa theo chiều dọc */
+        }
+        .action-button2 {
+            position: fixed;
+            top: 65%; /* Điều chỉnh vị trí theo y */
+            left: 50%; /* Điều chỉnh vị trí theo x */
+            transform: translate(-50%, -50%);
+            background-color: transparent; /* Màu nền */
+            color: white; /* Màu chữ */
+            padding: 15px 70px; /* Kích thước nút */
+            text-align: center; /* Căn giữa nút */
+            font-size: 16px;
+            text-decoration: none; /* Loại bỏ gạch chân */
+            cursor: pointer; /* Thay đổi hình dạng con trỏ khi di chuột qua nút */
+            border-radius: 8px; /* Độ cong viền */
+            border: 2px solid black; /* Loại bỏ viền */
+            overflow: hidden; /* Loại bỏ phần ngoài của hình ảnh và văn bản */
+        }
+
+        .action-button2:hover {
+            background-color: rgba(0, 0, 0, 0.5); /* Màu nền đen trong suốt */
+        }
+
+        /* CSS cho hình ảnh */
+        .action-button2 img {
+            margin-right: 10px; /* Tạo khoảng cách giữa hình ảnh và văn bản */
+            border-radius: 50%; /* Để làm cho hình ảnh bo tròn */
+            width: 30px; /* Độ rộng của hình ảnh */
+            height: 30px; /* Độ cao của hình ảnh */
+            vertical-align: middle; /* Căn giữa theo chiều dọc */
+        }
+        .action-button3 {
+            position: fixed;
+            top: 76%; /* Điều chỉnh vị trí theo y */
+            left: 50%; /* Điều chỉnh vị trí theo x */
+            transform: translate(-50%, -50%);
+            background-color: transparent; /* Màu nền */
+            color: white; /* Màu chữ */
+            padding: 15px 70px; /* Kích thước nút */
+            text-align: center; /* Căn giữa nút */
+            font-size: 16px;
+            text-decoration: none; /* Loại bỏ gạch chân */
+            cursor: pointer; /* Thay đổi hình dạng con trỏ khi di chuột qua nút */
+            border-radius: 8px; /* Độ cong viền */
+            border: 2px solid black; /* Loại bỏ viền */
+            overflow: hidden; /* Loại bỏ phần ngoài của hình ảnh và văn bản */
+        }
+
+        .action-button3:hover {
+            background-color: rgba(0, 0, 0, 0.5); /* Màu nền đen trong suốt */
+        }
+
+        /* CSS cho hình ảnh */
+        .action-button3 img {
+            margin-right: 10px; /* Tạo khoảng cách giữa hình ảnh và văn bản */
+            border-radius: 50%; /* Để làm cho hình ảnh bo tròn */
+            width: 30px; /* Độ rộng của hình ảnh */
+            height: 30px; /* Độ cao của hình ảnh */
+            vertical-align: middle; /* Căn giữa theo chiều dọc */
+        }
+        .ten {
+            position: fixed;
+            top: 44%; /* Điều chỉnh vị trí theo y */
+            left: 50%; /* Điều chỉnh vị trí theo x */
+            transform: translate(-50%, -50%);
+            background-color: transparent; /* Màu nền */
+            color: white; /* Màu chữ */
+            padding: 4px 60px; /* Kích thước nút */
+            text-align: center; /* Căn giữa nút */
+            font-size: 16px;
+            text-decoration: none; /* Loại bỏ gạch chân */
+            border-radius: 8px; /* Độ cong viền */
+            border: 2px solid black; /* Loại bỏ viền */
+            overflow: hidden; /* Loại bỏ phần ngoài của hình ảnh và văn bản */
+        }
+    </style>
     </style>
 </head>
 <body>
 <!-- Thanh chức năng -->
 <div class="navbar">
-  <a href="#" onclick="showInfo()">Trang chủ</a>
-  <a href="#" onclick="showInfo()">Thông tin</a>
-  <a href="https://discord.gg/uyjhD4zChC">Discord</a>
+  <a href="index.html">Trang chủ</a>
+  <a href="info.html">Thông tin</a>
+  <a href="discord.html">Discord</a>
+  <a href="nekfadvillage.html">NekFad Village</a>
 </div>
-
-<!-- Phần còn lại của trang web -->
-<table id="centercube">
-    <tr>
-        <td id="threedee">
-            <div id="cube">
-                <div id="front"></div>
-                <div id="back"></div>
-                <div id="left"></div>
-                <div id="right"></div>
-                <div id="top"></div>
-            </div>
-        </td>
-        <td id="wd">
-            <img src="img/webdisplays.png"/>
-        </td>
-        <td id="threedee">
-            <div id="cube">
-                <div id="front"></div>
-                <div id="back"></div>
-                <div id="left"></div>
-                <div id="right"></div>
-                <div id="top"></div>
-            </div>
-        </td>
-    </tr>
-</table>
 
 <!-- Phần credit -->
 <footer>
     <p>@Copyright 2023 NekFad, All rights reserved</p>
 </footer>
 
-<!-- Script để tạo hạt bụi -->
+<!-- Hình hộp chữ nhật để điền tên -->
+<div class="name-box"> </div>
+<!-- Ô avatar -->
+<div class="avatar"></div>
+
+<a href="https://www.facebook.com/n3kf4d" class="action-button">
+    <img src="img/facebook.png" alt="Avatar">
+    <span>Facebook</span>
+</a>
+<a href="https://discord.gg/uyjhD4zChC" class="action-button2">
+    <img src="img/discord.png" alt="Avatar">
+    <span>Discord</span>
+</a>
+<a href="https://www.youtube.com/channel/UC7aFeKZ3jm3u_L4HHmoXrag" class="action-button3">
+    <img src="img/youtube.png" alt="Avatar">
+    <span>Youtube</span>
+</a>
+<a class="ten">
+    <span>Phan Thanh Phú (NekFad)</span>
+</a>
+
+<!-- Script để tạo hạt bụi và hàm showInfo() -->
 <script>
     // Thêm hạt bụi mỗi 0.2 giây
     setInterval(createDirt, 200);
